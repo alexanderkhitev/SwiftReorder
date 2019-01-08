@@ -24,7 +24,7 @@ import UIKit
 import SwiftReorder
 
 class BasicViewController: UITableViewController {
-    
+        
     var items = (1...10).map { "Item \($0)" }
     
     required init?(coder aDecoder: NSCoder) {
@@ -40,9 +40,11 @@ class BasicViewController: UITableViewController {
         
         title = "Basic"
 
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        let nib = UINib(nibName: "ProTableViewCell", bundle: .main)
+        tableView.register(nib, forCellReuseIdentifier: "ProTableViewCell")
         tableView.allowsSelection = false
         tableView.reorder.delegate = self
+        tableView.reorder.setupInteracticeArea(50, side: .right)
     }
 
 }
@@ -58,7 +60,7 @@ extension BasicViewController {
             return spacer
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ProTableViewCell", for: indexPath)
         cell.textLabel?.text = items[indexPath.row]
         
         return cell

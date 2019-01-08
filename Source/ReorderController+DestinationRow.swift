@@ -44,6 +44,8 @@ extension ReorderController {
         newContext.destinationRow = newDestinationRow
         reorderState = .reordering(context: newContext)
         
+        selectionFeedbackGenerator.selectionChanged()
+        
         delegate?.tableView(tableView, reorderRowAt: context.destinationRow, to: newContext.destinationRow)
         
         tableView.beginUpdates()

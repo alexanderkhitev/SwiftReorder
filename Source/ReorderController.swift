@@ -195,25 +195,36 @@ public class ReorderController: NSObject {
         case reordering(context: ReorderContext)
     }
     
+    public enum Side {
+        case left
+        case right
+    }
+    
     weak var tableView: UITableView?
     
     var reorderState: ReorderState = .ready(snapshotRow: nil)
-    var snapshotView: UIView? = nil
+    var snapshotView: UIView?
     
     var autoScrollDisplayLink: CADisplayLink?
     var lastAutoScrollTimeStamp: CFTimeInterval?
     
-    lazy var reorderGestureRecognizer: UILongPressGestureRecognizer = {
+    private lazy var reorderGestureRecognizer: UILongPressGestureRecognizer = {
         let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleReorderGesture))
         gestureRecognizer.delegate = self
         gestureRecognizer.minimumPressDuration = self.longPressDuration
         return gestureRecognizer
     }()
     
+    let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+    let selectedFeedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+
     // MARK: - Lifecycle
     
     init(tableView: UITableView) {
         super.init()
+        
+        selectionFeedbackGenerator.prepare()
+        selectedFeedbackGenerator.prepare()
         
         self.tableView = tableView
         tableView.addGestureRecognizer(reorderGestureRecognizer)
@@ -235,6 +246,7 @@ public class ReorderController: NSObject {
         guard let sourceRow = tableView.indexPathForRow(at: tableTouchPosition),
             delegate.tableView(tableView, canReorderRowAt: sourceRow)
         else { return }
+        selectedFeedbackGenerator.impactOccurred()
         
         createSnapshotViewForCell(at: sourceRow)
         animateSnapshotViewIn()
@@ -336,6 +348,30 @@ public class ReorderController: NSObject {
         }
         
         return cell
+    }
+    
+    public func setupInteracticeArea(_ width: CGFloat, side: Side) {
+        guard let tableView = tableView else {
+            fatalError("setupInteracticeArea: tableView is nil")
+        }
+        
+        let x: CGFloat
+        
+        switch side {
+        case .left:
+            x = 0
+        case .right:
+            x = tableView.frame.width - width
+        }
+        
+        let frame = CGRect(x: x, y: 0, width: width, height: tableView.frame.height)
+        let handleView = UIView(frame: frame)
+        handleView.backgroundColor = .clear
+        
+        tableView.removeGestureRecognizer(reorderGestureRecognizer)
+        handleView.addGestureRecognizer(reorderGestureRecognizer)
+        
+        tableView.addSubview(handleView)
     }
     
 }

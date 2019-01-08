@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		345D979721E55A37009F58B2 /* ProTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D979521E55A37009F58B2 /* ProTableViewCell.swift */; };
+		345D979821E55A37009F58B2 /* ProTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 345D979621E55A37009F58B2 /* ProTableViewCell.xib */; };
 		66FC50F11D5EE49D00CFCCCE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC50E81D5EE49D00CFCCCE /* AppDelegate.swift */; };
 		66FC50F21D5EE49D00CFCCCE /* BasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC50E91D5EE49D00CFCCCE /* BasicViewController.swift */; };
 		66FC50F41D5EE49D00CFCCCE /* EffectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC50EB1D5EE49D00CFCCCE /* EffectsViewController.swift */; };
@@ -51,6 +53,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		345D979521E55A37009F58B2 /* ProTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProTableViewCell.swift; sourceTree = "<group>"; };
+		345D979621E55A37009F58B2 /* ProTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProTableViewCell.xib; sourceTree = "<group>"; };
 		660256931CE6A5170029CB5F /* SwiftReorderExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftReorderExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66DF25101D8080A000C19289 /* ReorderController+AutoScroll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ReorderController+AutoScroll.swift"; path = "Source/ReorderController+AutoScroll.swift"; sourceTree = "<group>"; };
 		66DF25111D8080A000C19289 /* ReorderController+DestinationRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ReorderController+DestinationRow.swift"; path = "Source/ReorderController+DestinationRow.swift"; sourceTree = "<group>"; };
@@ -91,6 +95,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		345D979421E55A15009F58B2 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				345D979521E55A37009F58B2 /* ProTableViewCell.swift */,
+				345D979621E55A37009F58B2 /* ProTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		6602568A1CE6A5170029CB5F = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +126,7 @@
 		660256951CE6A5170029CB5F /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				345D979421E55A15009F58B2 /* Cells */,
 				66FC50E81D5EE49D00CFCCCE /* AppDelegate.swift */,
 				66FC50F01D5EE49D00CFCCCE /* RootViewController.swift */,
 				66FC50E91D5EE49D00CFCCCE /* BasicViewController.swift */,
@@ -211,6 +225,7 @@
 				TargetAttributes = {
 					660256921CE6A5170029CB5F = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 35L77VM7C3;
 						LastSwiftMigration = 1000;
 					};
 					D9DAD5DC2134663E00484E71 = {
@@ -244,6 +259,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				345D979821E55A37009F58B2 /* ProTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +284,7 @@
 				66FC50F71D5EE49D00CFCCCE /* LongListViewController.swift in Sources */,
 				66FC50F51D5EE49D00CFCCCE /* GroupedViewController.swift in Sources */,
 				66FC50F21D5EE49D00CFCCCE /* BasicViewController.swift in Sources */,
+				345D979721E55A37009F58B2 /* ProTableViewCell.swift in Sources */,
 				66FC50F41D5EE49D00CFCCCE /* EffectsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,9 +424,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 35L77VM7C3;
 				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = adamshin.SwiftReorder;
+				PRODUCT_BUNDLE_IDENTIFIER = com.khitev.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 			};
@@ -420,10 +439,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 35L77VM7C3;
 				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = adamshin.SwiftReorder;
+				PRODUCT_BUNDLE_IDENTIFIER = com.khitev.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 			};
@@ -447,6 +467,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = SwiftReorder/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = adamshin.SwiftReorder.SwiftReorder;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -477,6 +498,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = SwiftReorder/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = adamshin.SwiftReorder.SwiftReorder;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
