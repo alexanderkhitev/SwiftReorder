@@ -44,7 +44,9 @@ class BasicViewController: UITableViewController {
         tableView.register(nib, forCellReuseIdentifier: "ProTableViewCell")
         tableView.allowsSelection = false
         tableView.reorder.delegate = self
-        tableView.reorder.setupInteracticeArea(50, side: .right)
+        
+        let startPoint = UIScreen.main.bounds.width - 70
+        tableView.reorder.setupActiveHorizontalRange(startPoint...UIScreen.main.bounds.width)
     }
 
 }

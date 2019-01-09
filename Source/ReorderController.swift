@@ -217,6 +217,8 @@ public class ReorderController: NSObject {
     
     let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
     let selectedFeedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+    
+    var activeHorizontalRange: ClosedRange<CGFloat>?
 
     // MARK: - Lifecycle
     
@@ -350,28 +352,8 @@ public class ReorderController: NSObject {
         return cell
     }
     
-    public func setupInteracticeArea(_ width: CGFloat, side: Side) {
-        guard let tableView = tableView else {
-            fatalError("setupInteracticeArea: tableView is nil")
-        }
-        
-        let x: CGFloat
-        
-        switch side {
-        case .left:
-            x = 0
-        case .right:
-            x = tableView.frame.width - width
-        }
-        
-        let frame = CGRect(x: x, y: 0, width: width, height: tableView.frame.height)
-        let handleView = UIView(frame: frame)
-        handleView.backgroundColor = .clear
-        
-        tableView.removeGestureRecognizer(reorderGestureRecognizer)
-        handleView.addGestureRecognizer(reorderGestureRecognizer)
-        
-        tableView.addSubview(handleView)
+    public func setupActiveHorizontalRange(_ range: ClosedRange<CGFloat>) {
+        activeHorizontalRange = range
     }
     
 }
